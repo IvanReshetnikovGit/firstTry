@@ -1,0 +1,66 @@
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+<style>
+    .calculator-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+     .operation-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .result-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<div class="calculator-container">
+    <h1>Калькулятор</h1>
+
+    <form asp-action="Calculate" method="post" class="input-container">
+        <label for="num1">Перше число:</label>
+        <input type="text" name="num1" required />
+        <br />
+        <label for="num2">Друге число:</label>
+        <input type="text" name="num2" required />
+        <br />
+        <div class="operation-container">
+        <label for="operation">Операції:</label>
+            <select name="operation">
+                <option value="Add">Додавання</option>
+                <option value="Subtract">Віднімання</option>
+                <option value="Multiply">Множення</option>
+                <option value="Divide">Ділення</option>
+            </select>
+        </div>
+        <br />
+        <input type="submit" value="Розрахувати" />
+    </form>
+
+    <div class="result-container">
+        @if (ViewBag.Result != null)
+        {
+            <h2>Результат: @ViewBag.Result</h2>
+            
+        }
+
+        @if (ViewBag.Error != null)
+        {
+            <h2>Error:</h2>
+            <p>@ViewBag.Error</p>
+        }
+    </div>
+</div>

@@ -1,0 +1,56 @@
+@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    .login-container {
+        display: flex;
+        margin-top: 10%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+     .operation-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+</style>
+
+<div class="login-container">
+    <form asp-action="Index" method="post" class="input-container">
+        <div class="operation-container">
+            <label for="Id">Користувач:</label>
+            <select name="Id">
+                <option value="0">Адміністратор</option>
+                <option value="1">Користувач</option>
+                <option value="2">Гість</option>
+            </select>
+         </div>
+        <br />
+        <div>
+            <label for="password">Пароль:</label>
+            <input type="text" name="password"required />
+        </div>
+        <br />
+        <input class="operation-container" type="hidden" name="submit" value="true" />
+        <input class="operation-container" type="submit" value="Увійти" />
+    </form>
+    <div class="error-container">
+        @if (ViewBag.Error != null)
+        {
+            <p>@ViewBag.Error</p>
+        }
+    </div>
+</div>

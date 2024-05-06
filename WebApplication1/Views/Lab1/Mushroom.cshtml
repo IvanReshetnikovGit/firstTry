@@ -1,0 +1,79 @@
+@{
+    ViewData["Title"] = "Mushrooms";
+}
+<style>
+    .Developing-container {
+        display: flex;
+        justify-content: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .search-container input[type="text"] {
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    .search-container input[type="submit"] {
+        padding: 5px 10px;
+        margin-left: 5px;
+        border-radius: 3px;
+        border: 1px solid #007bff;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+<div class="Developing-container">
+    <div class="search-container">
+        @using (Html.BeginForm("SearchMushrooms", "Lab1", FormMethod.Get))
+        {
+            <input type="text" name="searchString" placeholder="Search...">
+            <input type="submit" value="Search">
+        }
+    </div>
+</div>
+<h2>Mushrooms</h2>
+<div class="Developing-container">
+    <table>
+        <tr>
+            <th>@Html.ActionLink("ID", "Mushroom", new { sortOrder = ViewBag.IdSortParm})</th>
+            <th>@Html.ActionLink("Name", "Mushroom", new { sortOrder = ViewBag.NameSortParm})</th>
+            <th>@Html.ActionLink("Edibility", "Mushroom", new { sortOrder = ViewBag.EdibilitySortParm })</th>
+            <th>@Html.ActionLink("Class", "Mushroom", new { sortOrder = ViewBag.ClassSortParm })</th>
+            <th>@Html.ActionLink("Market Price", "Mushroom", new { sortOrder = ViewBag.PriceSortParm })</th>
+            <th>@Html.ActionLink("Mushroom Birthplace", "Mushroom", new { sortOrder = ViewBag.BirthplaceSortParm })</th>
+            <th>@Html.ActionLink("Rarity", "Mushroom", new { sortOrder = ViewBag.RaritySortParm })</th>
+        </tr>
+        @foreach (var mushroom in ViewBag.mushrooms)
+        {
+            <tr>
+                <td>@mushroom.Idmushroom</td>
+                <td>@mushroom.Name</td>
+                <td>@(mushroom.Edibility ? "Edible" : "Not Edible")</td>
+                <td>@mushroom.Class</td>
+                <td>@mushroom.Market_price</td>
+                <td>@mushroom.Mushroom_birthplace</td>
+                <td>@mushroom.Rarity</td>
+            </tr>
+        }
+    </table>
+</div>

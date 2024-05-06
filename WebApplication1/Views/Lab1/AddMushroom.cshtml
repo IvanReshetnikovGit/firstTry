@@ -1,0 +1,41 @@
+@model Mushroom
+
+<h2>Add Mushroom</h2>
+
+<form asp-action="AddMushroom1" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Edibility" class="control-label"></label>
+        <div class="checkbox">
+            <input asp-for="Edibility" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Class">Class:</label>
+        <input asp-for="Class" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Market_price">Market Price:</label>
+        <input asp-for="Market_price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Mushroom_birthplace">Birthplace:</label>
+        <input asp-for="Mushroom_birthplace" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Rarity">Rarity:</label>
+        <input asp-for="Rarity" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}

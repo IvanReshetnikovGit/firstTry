@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Admin";
+}
+<style>
+    .Developing-container {
+        display: flex;
+        justify-content: center;
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    .buttons input[type="submit"] {
+        margin: 0 10px;
+    }
+</style>
+
+<div class="Developing-container">
+    <form asp-action="AddGather" method="post" class="input-container">
+        <div class="buttons">
+            <input type="submit" value="Add Gather" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <form asp-action="DeleteGather" method="post" class="input-container">
+        <div class="buttons">
+            <button type="submit" name="operation" value="DeleteGather" class="btn btn-danger">Remove Gather</button>
+        </div>
+    </form>
+
+    <form asp-action="AddMushroomPicker" method="post" class="input-container">
+        <div class="buttons">
+            <input type="submit" value="Add Mushroom picker" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <form asp-action="DeleteMushroomPicker" method="post" class="input-container">
+        <div class="buttons">
+            <button type="submit" name="operation" value="DeleteMushroom_picker" class="btn btn-danger">Remove Mushroom picker</button>
+        </div>
+    </form>
+
+    <form asp-action="AddMushroom" method="post" class="input-container">
+        <div class="buttons">
+            <input type="submit" value="Add Mushroom" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <form asp-action="DeleteMushroom" method="post" class="input-container">
+        <div class="buttons">
+            <button type="submit" name="operation" value="DeleteMushroom" class="btn btn-danger">Delete Mushroom</button>
+        </div>
+    </form>
+</div>

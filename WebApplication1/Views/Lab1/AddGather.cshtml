@@ -1,0 +1,22 @@
+@model Gather
+
+<h2>Add Gather</h2>
+
+<form asp-action="AddGather1" method="post">
+    <div class="form-group">
+        <label asp-for="idmushroom_picker">Picker ID:</label>
+        <input asp-for="idmushroom_picker" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Idmushroom">Mushroom ID:</label>
+        <input asp-for="Idmushroom" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}

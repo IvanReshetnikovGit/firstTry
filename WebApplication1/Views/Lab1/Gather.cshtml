@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "Gather";
+}
+<style>
+    .Developing-container {
+        display: flex;
+        justify-content: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .search-container input[type="text"] {
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    .search-container input[type="submit"] {
+        padding: 5px 10px;
+        margin-left: 5px;
+        border-radius: 3px;
+        border: 1px solid #007bff;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+</style>
+
+<div class="Developing-container">
+    <div class="search-container">
+        @using (Html.BeginForm("SearchGathers", "Lab1", FormMethod.Get))
+        {
+            <input type="text" name="searchString" placeholder="Search...">
+            <input type="submit" value="Search">
+        }
+    </div>
+</div>
+<h2>Gather</h2>
+<div class="Developing-container">
+    <table>
+        <tr>
+            <th>@Html.ActionLink("ID", "Gather", new { sortOrder = ViewBag.IdSortParm })</th>
+            <th>@Html.ActionLink("ID Mushroom", "Gather", new { sortOrder = ViewBag.MushroomIdSortParm })</th>
+            <th>@Html.ActionLink("ID Mushroom Picker", "Gather", new { sortOrder = ViewBag.PickerIdSortParm })</th>
+        </tr>
+        @foreach (var gather in ViewBag.gathers ?? Enumerable.Empty<Gather>())
+        {
+            <tr>
+                <td>@gather.IdGather</td>
+                <td>@gather.Idmushroom</td>
+                <td>@gather.idmushroom_picker</td>
+            </tr>
+        }
+    </table>
+</div>
